@@ -1,0 +1,74 @@
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2;
+    background: #292b31;
+    color: rgb(172, 180, 187);
+    height: 35px;
+    margin: 0 auto;
+    padding: 0 auto;
+    box-shadow: 0 2px 5px #1c1d21c6;
+    -webkit-app-region: drag;
+}
+.topBar-logo-div {
+    background-color: rgb(172, 180, 187);;
+    background-image: linear-gradient(to top, #00B7F8, #00D9D9, #0CF0AF);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    background-color: #292b31;
+    color: rgb(84, 125, 161);
+    text-decoration: none;
+}
+.topBar-control-div {
+    background-color: #292b31;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-app-region: no-drag;
+}
+.topBar-control-button{
+    background-color: #292b31;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+    width: 50px;
+    -webkit-app-region: no-drag;
+}
+.topBar-control-button:hover {
+    background-color: #36373c;
+    cursor: default;
+    -webkit-app-region: no-drag;
+}
+.topBar-control-button-close{
+    background-color: #292b31;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+    width: 50px;
+    -webkit-app-region: no-drag;
+}
+.topBar-control-button-close:hover {
+    background-color: #ef6464;
+    cursor: default;
+    -webkit-app-region: no-drag;
+}
+#react-icons {
+    background-color: #292b3100;
+    font-size: 1rem;
+    -webkit-app-region: no-drag;
+}
+#react-icons-close {
+    background-color: #292b3100;
+    font-size: 1.5rem;
+    -webkit-app-region: no-drag;
+}
