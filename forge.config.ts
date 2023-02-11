@@ -24,7 +24,7 @@ const config: ForgeConfig = {
             name: 'main_window',
             preload: {
               js: './src/preload.ts',
-            },
+            },  
           },
         ],
       },

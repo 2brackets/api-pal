@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain} from 'electron';
 
-declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
-declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
+declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
+declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: any;
 
 
 if (require('electron-squirrel-startup')) {
@@ -26,6 +26,24 @@ const createWindow = (): void => {
 
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
   mainWindow.webContents.openDevTools();
+
+  ipcMain.on('close', () => {
+    mainWindow.close()
+  });
+
+  ipcMain.on('minimize', () => {
+      mainWindow.minimize();
+  });
+
+  ipcMain.on('maximize', () => {
+    if(mainWindow.isMaximized()){
+      mainWindow.restore()
+    } else {
+      mainWindow.maximize();
+    }
+  });
+
+  mainWindow.webContents.send('maximize')
 };
 
 app.on('ready', createWindow);
