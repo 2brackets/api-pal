@@ -35,15 +35,17 @@ const createWindow = (): void => {
       mainWindow.minimize();
   });
 
-  ipcMain.on('maximize', () => {
+  ipcMain.on('maximize', (event) => {
     if(mainWindow.isMaximized()){
       mainWindow.restore()
+      event.returnValue = 'Restored'
     } else {
       mainWindow.maximize();
+      event.returnValue = 'Maximized'
     }
   });
 
-  mainWindow.webContents.send('maximize')
+  // mainWindow.webContents.send('maximize')
 };
 
 app.on('ready', createWindow);
