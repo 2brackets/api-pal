@@ -44,8 +44,7 @@ const createWindow = (): void => {
       event.returnValue = 'Maximized'
     }
   });
-
-  // mainWindow.webContents.send('maximize')
+  
 };
 
 app.on('ready', createWindow);

@@ -1,40 +1,44 @@
-import { ReactElement } from 'react';
-import ReactDOMServer from 'react-dom/server';
+
+import { useState } from 'react';
 import { BiWindow, BiWindows, BiMinus, BiX } from 'react-icons/bi';
-import './global.css'
+import './TopBar.css'
 
-const maximazeTitle = 'Maximaze'
-const maximizeIcon = <BiWindow/>
+function Topbar() {
 
-function setWindowSize(): void {
-    const windowSize = window.api.windowSize()
-    if(windowSize == 'Restored'){
-        updateMaximizeBtn('Maximaze', <BiWindow/>)   
-    } else {
-        updateMaximizeBtn('Restore', <BiWindows/>)  
-    }  
-}
+    const maximazeTitleMaximaze = 'Maximaze'
+    const maximazeTitleRestore = 'Restore'
+    const maximizeIconWindow = <BiWindow/>
+    const maximizeIconWindows = <BiWindows/>
 
-function updateMaximizeBtn(title: string, icon: ReactElement): void {
-    const element = document.getElementById('maximizeBtn')
-    element.title = title
-    element.innerHTML =  ReactDOMServer.renderToString(icon);
-}
+    const [maximizeBtnIcon, setIcon] = useState(maximizeIconWindow);
+    const [maximizeBtnText, setText] = useState(maximazeTitleMaximaze);      
 
-function windowAction(action: string): void {
-    window.api.windowAction(action);    
-}
+    function windowAction(action: string): void {
+        window.api.windowAction(action);    
+    }
 
+    function setWindowSize(): void {
+        const windowSize = window.api.windowSize()
+        if(windowSize == 'Restored'){
+            setIcon(maximizeIconWindow)
+            setText(maximazeTitleMaximaze)   
+        } else {
+            setIcon(maximizeIconWindows)
+            setText(maximazeTitleRestore)      
+        }  
+    }
 
-function Topbar(){
     return (
         <div className='topBar'>
-            <div className='topBar-logo-div'>
-                AP
+            <div className='topBar-menu-div'>
+                <div id='icon' className='topBar-menu-btn-icon'>AP</div>
+                <div className='topBar-menu-btn'>
+                    <button id='topBar-btn'>File</button>
+                </div>
             </div>
             <div className='topBar-control-div'>
                 <div className='topBar-control-button' onClick={()=> windowAction('minimize')} title='Minimize'><BiMinus id='react-icons'/></div>
-                <div className='topBar-control-button' id='maximizeBtn' onClick={()=> setWindowSize()} title={maximazeTitle}>{maximizeIcon}</div>
+                <div className='topBar-control-button' id='maximizeBtn' onClick={()=> setWindowSize()} title={maximizeBtnText}>{maximizeBtnIcon}</div>
                 <div className='topBar-control-button-close' onClick={()=> windowAction('close')} title='Close'><BiX id='react-icons-close'/></div>
             </div>
         </div>
