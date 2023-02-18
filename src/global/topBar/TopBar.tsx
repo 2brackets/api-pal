@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { BiWindow, BiWindows, BiMinus, BiX } from 'react-icons/bi';
 import './TopBar.css'
+import DropDownMenu from './dropdownmenus/DropDown';
+import { windowAction } from '../../scripts/windowFunctions';
 
 function Topbar() {
 
@@ -11,11 +13,7 @@ function Topbar() {
     const maximizeIconWindows = <BiWindows/>
 
     const [maximizeBtnIcon, setIcon] = useState(maximizeIconWindow);
-    const [maximizeBtnText, setText] = useState(maximazeTitleMaximaze);      
-
-    function windowAction(action: string): void {
-        window.api.windowAction(action);    
-    }
+    const [maximizeBtnText, setText] = useState(maximazeTitleMaximaze); 
 
     function setWindowSize(): void {
         const windowSize = window.api.windowSize()
@@ -33,7 +31,7 @@ function Topbar() {
             <div className='topBar-menu-div'>
                 <div id='icon' className='topBar-menu-btn-icon'>AP</div>
                 <div className='topBar-menu-btn'>
-                    <button id='topBar-btn'>File</button>
+                    <DropDownMenu/>
                 </div>
             </div>
             <div className='topBar-control-div'>

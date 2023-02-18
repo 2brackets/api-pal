@@ -39,6 +39,7 @@
     -webkit-app-region: no-drag;
 }
 .topBar-menu-btn{
+    position: relative;
     background-color: #292b31;
     display: flex;
     justify-content: center; 
@@ -53,8 +54,12 @@
     border: 0;
     background-color: #292b31;
     font-size: 0.8rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 #topBar-btn:hover {
+    background-color: #36373c;
+}
+#topBar-btn:focus {
     background-color: #36373c;
 }
 .topBar-control-div {
